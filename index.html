@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayo Mau Ngapain</title>
+    <style>
+        /* --- CSS untuk Tampilan --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #2c3e50; /* Latar belakang gelap */
+            color: #ecf0f1; /* Warna teks terang */
+        }
+
+        .container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Tampilan Overlay Kunci */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #lock-screen h2 {
+            color: #e74c3c; /* Merah untuk peringatan */
+            margin-bottom: 20px;
+        }
+
+        #password-input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #e74c3c;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 250px;
+            font-size: 16px;
+            background-color: #ecf0f1;
+            color: #34495e;
+        }
+
+        #submit-button {
+            padding: 10px 20px;
+            background-color: #2ecc71; /* Hijau untuk tombol */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #submit-button:hover {
+            background-color: #27ae60;
+        }
+
+        /* Tampilan Konten Rahasia */
+        #secret-content {
+            display: none; /* Awalnya disembunyikan */
+            text-align: left;
+            padding: 20px 0;
+        }
+
+        #secret-content h1 {
+            color: #f1c40f;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1c40f;
+            padding-bottom: 10px;
+        }
+        
+        #secret-content h3 {
+            color: #3498db;
+            margin-top: 20px;
+        }
+
+        #secret-content p {
+            margin: 5px 0;
+            white-space: pre-line; /* Mempertahankan baris baru dalam teks */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <h2>🔒 AKSES TERBATAS 🔒</h2>
+        <p>Hanya orang yang memiliki akses yang dapat masuk.</p>
+        <input type="password" id="password-input" placeholder="Masukkan Kata Sandi">
+        <button id="submit-button" onclick="checkPassword()">Buka Kunci</button>
+        <p id="error-message" style="color: #e74c3c; margin-top: 10px;"></p>
+    </div>
+
+    <div id="secret-content" class="container">
+        <h1>Keep Silent 😶</h1>
+        
+        <h3>Shoppefood</h3>
+        <p>104.18.56.56
+           104.18.62.203</p>
+           
+        <p>cf.shopee.co.id.sea-sw.swiftserve.com</p>
+        
+        <hr style="border-color: #3498db;">
+
+        <h3>Vidi pross</h3>
+        <p>172.67.222.188
+           104.21.94.111</p>
+           
+        <hr style="border-color: #3498db;">
+
+        <h3>TKP timur tengah</h3>
+        <p>Mode : WS</p>
+        <p>Suport by tentara langit</p>
+    </div>
+
+    <script>
+        // Tentukan kata sandi rahasia di sini
+        const SECRET_PASSWORD = "circelcuanmv"; // Ganti ini dengan kata sandi Anda
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const lockScreen = document.getElementById('lock-screen');
+            const secretContent = document.getElementById('secret-content');
+            const errorMessage = document.getElementById('error-message');
+
+            if (input === SECRET_PASSWORD) {
+                // Kata sandi benar
+                lockScreen.style.display = 'none'; // Sembunyikan layar kunci
+                secretContent.style.display = 'block'; // Tampilkan konten rahasia
+                errorMessage.textContent = ''; // Hapus pesan error
+            } else {
+                // Kata sandi salah
+                errorMessage.textContent = '❌ Kata sandi salah. Akses ditolak.';
+                // Kosongkan input untuk mencoba lagi
+                document.getElementById('password-input').value = ''; 
+                // Opsional: Tambahkan sedikit getaran pada input
+                document.getElementById('password-input').style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    document.getElementById('password-input').style.animation = '';
+                }, 500);
+            }
+        }
+        
+        // CSS untuk animasi shake (Opsional, letakkan dalam <style> jika mau)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                50% { transform: translateX(5px); }
+                75% { transform: translateX(-5px); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Tambahkan event listener untuk tombol 'Enter' pada input
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+
+</body>
+</html
